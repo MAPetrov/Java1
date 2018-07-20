@@ -1,68 +1,156 @@
-package ru.geekbrains.java1.dz.dz1.Mikhail_Petrov;
+package ru.geekbrains.java1.dz.dz2.Mikhail_Petrov;
+
+import java.util.Arrays;
 
 public class Main {
 
-    // задача 2 - создаю и иициализирую переменные
-    byte varByte = 1;
-    short varShort = 1;
-    int varInt = 1;
-    long varLong = 1L;
-    float varFloat = 1.0f;
-    double varDouble = 1.00;
-    char varChar = 'A';
-    boolean varBoolean = true;
-
     public static void main(String[] args) {
-        System.out.println(task3Calculate(2,2,2,2));
-        System.out.println(task4Compare(5, 6));
-        task5IsPositiveOrNegative(-30);
-        System.out.println(task6IsNegative(-5));
-        task7PrintName("Миша");
-        task8LeapYear(2018);
+        invertArray();
+        System.out.println();
+        System.out.println();
+        fillArray();
+        System.out.println();
+        System.out.println();
+        multiplyArray();
+        System.out.println();
+        System.out.println();
+        diagonalArray();
+        System.out.println();
+        minmaxArray();
+        System.out.println();
+        int[] arr_input = {1, 5, 3, 3};
+        System.out.println(checkSum(arr_input));
+        System.out.println();
+        int[] arr2_input = {1, 5, 3, 3,7};
+        replaceElements(arr2_input, -2);
+
+    }
+    // 1. Задать целочисленный массив, состоящий из элементов 0 и 1. Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ]. С помощью цикла и условия заменить 0 на 1, 1 на 0;
+
+    public static void invertArray() {
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                arr[i] = 0;
+            } else {
+                arr[i] = 1;
+            }
+            System.out.print(arr[i] + " ");
+        }
     }
 
-    // решаю задачу 3: Написать метод вычисляющий выражение a * (b + (c / d)) и возвращающий результат,где a, b, c, d – входные параметры этого метода
-    public static int task3Calculate(int a, int b, int c, int d) {
-        return a * (b + (c / d));
+    // 2. Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
+    public static void fillArray() {
+        int[] arr2 = new int[8];
+        int a = 0;
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = a;
+            a += 3;
+            System.out.print(arr2[i] + " ");
+        }
     }
 
-    // решаю задачу 4: Написать метод, принимающий на вход два числа, и проверяющий что их сумма лежит в пределах от 10 до 20(включительно), если да – вернуть true, в противном случае – false
-    public static boolean task4Compare(int x1, int x2) {
-        if ((x1 + x2) <=20 && (x1 + x2) >= 10) {
-            return true;
-        } else {
-            return false;
-        }
-                    }
+    // 3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
 
-    // решаю задачу 5: Написать метод, которому в качестве параметра передается целое число, метод должен напечатать в консоль положительное ли число передали, или отрицательное; Замечание: ноль считаем положительным числом.
-    public static void task5IsPositiveOrNegative(int y) {
-        if (y >= 0) {
-            System.out.println("Число положительное");
-        } else {
-            System.out.println("Число отрицательное");
+    public static void multiplyArray() {
+        int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < arr3.length; i++) {
+            if (arr3[i] < 6) {
+                arr3[i] *= 2;
+            }
+            System.out.print(arr3[i] + " ");
         }
+    }
+
+    // 4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое), и с помощью цикла(-ов) заполнить его диагональные элементы единицами;
+
+    public static void diagonalArray() {
+        int[][] table = new int[5][5];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == j) {
+                    table[i][j] = 1;
+
+                }
+                if ((i + j) == 4) {
+                    table[i][j] = 1;
+                }
+
+            }
+        }
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table.length; j++) {
+                System.out.print(table[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    // 5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы (без помощи интернета);
+    public static void minmaxArray() {
+        int[] arr5 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        int max = arr5[0];
+        int min = arr5[0];
+        for (int i = 0; i < arr5.length; i++) {
+            if (arr5[i] > max) {
+                max = arr5[i];
+            }
+            if (arr5[i] < min) {
+                min = arr5[i];
+            }
+        }
+        System.out.print("Максимальный элемент = " + max + "; минимальный элемент = " + min);
+    }
+
+    // 6. ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true если в массиве есть место,
+    // в котором сумма левой и правой части массива равны.
+    // Примеры: checkBalance([1, 1, 1, || 2, 1]) → true, checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 10])
+    // → true, граница показана символами ||, эти символы в массив не входят.
+
+    public static boolean checkSum(int[] arr6) {
+        int Left = 0;
+        int Right = 0;
+        int Current = 0;
+        boolean check = false;
+        for (int i = 0; i < arr6.length; i++) {
+            Left += arr6[i];
+            Current = i + 1;
+            Right = 0;
+            for (int x = Current; x < arr6.length; x++) {
+                Right += arr6[x];
+            }
+            System.out.println("left =" + Left + "right =" + Right);
+
+            if (Left == Right) {
+                check = true;
+            }
+        }
+
+        return check;
+    }
+    // 7. **** Написать метод, которому на вход подается одномерный массив и число n
+    // (может быть положительным, или отрицательным), при этом метод должен сместить все элементымассива на n позиций.
+    // Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+
+    public static void replaceElements(int[] arr7, int a) {
+        int move = 0;
+        if (a > 0) {
+            move = a;
+        } else {
+            move = arr7.length + a;
+        }
+            while (move != 0) {
+                int pos0 = arr7[0];
+                for (int i = 0; i < arr7.length -1; i++) {
+                    arr7[i] = arr7[i + 1];
+                }
+                arr7[arr7.length -1] = pos0;
+                move -= 1;
+            }
+            for (int i = 0; i < arr7.length; i++) {
+            System.out.print(arr7[i]);
+        }
+    }
 }
 
-    // решаю задачу 6: Написать метод, которому в качестве параметра передается целое число, метод должен вернуть true, если число отрицательное
-    public static boolean task6IsNegative(int z) {
-        if (z < 0) {
-            return true;
-        }
-        return false;
-    }
 
-    // решаю задачу 7: Написать метод, которому в качестве параметра передается строка, обозначающая имя, метод должен вывести в консоль сообщение «Привет, указанное_имя!»
-    public static void task7PrintName(String Name) {
-        System.out.println("Привет, " + Name + "!");
-    }
-
-    // решаю задачу 8:  Написать метод, который определяет является ли год високосным, и выводит сообщение в консоль. Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
-    public static void task8LeapYear(int Year) {
-        if (Year % 4 == 0 && (Year % 100 !=0 || Year % 400 == 0)) {
-            System.out.println("Введенный год високосный");
-        } else {
-            System.out.println("Введенный год не високосный");
-        }
-    }
-}
